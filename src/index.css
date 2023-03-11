@@ -28,11 +28,10 @@ body {
   font-family: 'Poppins', sans-serif;
 }
 
-
-
 main {
   display: flex;
   max-width: 1150px;
+  margin: 0 1rem;
 }
 
 .info {
@@ -69,6 +68,7 @@ main {
   align-items: center;
   padding: .9em .5em;
   border-radius: 10px;
+  text-align: center;
   box-shadow: 0px 8px 0px  var(--neutral-dark-blue-transparent);
 }
 
@@ -106,6 +106,7 @@ form input {
 form input:focus {
   outline: 1px solid black;
 }
+
 
 form input::placeholder {
   font-family: inherit;
@@ -149,6 +150,15 @@ form.error .error-message {
   display: block;
 }
 
+/* This should happen when the email field is not empty but doesn't match email validation regex */
+form.email-error .email-error-icon, form.email-error .email-error-message {
+  display: block;
+}
+
+form.email-error .email-error-input {
+  border: 2px solid var(--primary-red);
+}
+
 .btn {
   margin: 0 auto;
   background-color: var(--primary-green);
@@ -184,7 +194,43 @@ form.error .error-message {
   text-decoration: none;
 }
 
+@media (max-width: 56.25em) {
+  .heading {
+    font-size: 2.5rem;
+  }
+}
 
+@media (max-width: 50em) {
+  main {
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  .info {
+    text-align: center;
+  }
+}
+
+@media (max-width: 37.5em) {
+  .form-container {
+    padding: 1.5em 1.8em;
+    margin-bottom: 1.5rem;
+  }
+
+  .heading {
+    font-size: 2rem;
+  }
+
+  .btn {
+    text-align: center;
+    font-size: .9rem;
+    box-shadow: 0px 4px 0px  var(--primary-green-dark);
+  }
+
+  form input {
+    font-size: 14px;
+  }
+}
 
 @media (min-width: 70rem) {
   body {
