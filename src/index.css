@@ -18,7 +18,7 @@
 }
 
 body {
-  background-image: url("./images/bg-intro-mobile.png");
+  background-image: url("/images/bg-intro-mobile.png");
   background-color: var(--primary-red);
   min-height: 100vh;
   display: flex;
@@ -235,6 +235,6 @@ form.email-error .email-error-input {
 
 @media (min-width: 70rem) {
   body {
-    background-image: url("./images/bg-intro-desktop.png");
+    background-image: url("/images/bg-intro-desktop.png");
   }
 }
