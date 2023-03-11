@@ -9,6 +9,34 @@ function App() {
     userPassword: ""
   })
 
+  function isDataEmpty(inputObject) {
+    return Object.values(inputObject).every(value => value === "");
+  }
+
+  function validateEmail(emailValue) {
+    const regex = /\S+@\S+\.\S+/;
+    return regex.test(emailValue);
+  }
+
+  function handleSubmit(event) {
+    event.preventDefault()
+    if (isDataEmpty(inputValue)) {
+      event.target.classList.add("error")
+      setTimeout(() => {
+        event.target.classList.remove("error")
+      }, 6000)
+    } else {
+      if (!validateEmail(inputValue.email)) {
+        event.target.classList.add("email-error")
+        setTimeout(() => {
+          event.target.classList.remove("email-error")
+        }, 4000)
+      } else {
+        event.target.submit()
+      }
+    }
+  }
+
   function handleChange(event) {
     const {name, value} = event.target;
 
@@ -26,35 +54,37 @@ function App() {
       type: "text",
       name: "firstName",
       label: "Last Name",
-      errorMessage: ""
+      errorMessage: "First name cannot be empty",
+      pattern: "John",
+      // required: true
     },
     {
       placeholder:"Last Name",
       type: "text",
       name: "lastName",
       label: "Last Name",
-      errorMessage: ""
+      errorMessage: "Last name cannot be empty",
+      // required: true
     },
     {
       placeholder: "Email",
       type: "email",
       name: "email",
       label: "Email",
-      errorMessage: ""
+      errorMessage: "Looks like this isn't an email",
+      // required: true
     },
     {
       placeholder:"Password",
       type: "text",
       name: "userPassword",
       label: "Password",
-      errorMessage: ""
+      errorMessage: "Password cannot be empty",
+      // required: true
     },
   ]
 
-  function handleSubmit(event) {
-    event.preventDefault()
-    console.log(inputValue);
-  }
+
 
   return (
     <main id='main'>
@@ -79,41 +109,6 @@ function App() {
               />)
             })}
 
-            {/* <Input
-              onChangeFunc={handleChange}
-              placeholder="First Name"
-              type="text"
-              name="firstName"
-              label="First Name"
-              value={inputValue.firstName}
-            />
-
-            <Input
-              onChangeFunc={handleChange}
-              placeholder="Last Name"
-              type="text"
-              name="lastName"
-              label="Last Name"
-              value={inputValue.lastName}
-            />
-
-            <Input
-              onChangeFunc={handleChange}
-              placeholder="Email Address"
-              type="email"
-              name="email"
-              label="Email"
-              value={inputValue.email}
-            />
-
-            <Input
-              onChangeFunc={handleChange}
-              placeholder="Password"
-              type="password"
-              name="userPassword"
-              label="Password"
-              value={inputValue.userPassword}
-            /> */}
             <button aria-label='Subscription Button' className='btn'>Claim your free trial</button>
           </form>
           <p className='terms-message'>By clicking the button, you are agreeing to our <a href='#' className='terms-condition' aria-label='Terms and Conditions'>Terms and Services</a></p>
