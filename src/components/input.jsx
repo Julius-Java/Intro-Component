@@ -17,7 +17,6 @@ function Input(props) {
                 name={name}
                 aria-label={label}
                 value={value}
-                autoComplete="none"
             />
 
             <p className={"error-message " + `${extraClassNameMessage}`}>
