@@ -97,7 +97,7 @@ function App() {
           <p><span className='banner-span'>Try it free 7 days</span> then $20/mo. thereafter</p>
         </div>
         <div className="form-container">
-          <form onSubmit={handleSubmit} id='form' autoComplete="none">
+          <form onSubmit={handleSubmit} id='form' autoComplete="off">
 
             {formInputArray.map((itemObject, index) => {
               return (
